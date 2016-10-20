@@ -223,3 +223,50 @@ h2 {
   -webkit-animation: woocommerce 1.5s ease-in-out forwards;
   animation: woocommerce 1.5s ease-in-out forwards;
 }
+
+
+
+/** bubble visualization */
+
+#popultaed_places{ 
+  marker-fill-opacity: 0.6; 
+  marker-line-color: #3E7BB6; 
+  marker-line-width: 0.20; 
+  marker-line-opacity: 0; 
+  marker-placement: point; 
+  marker-multi-policy: largest; 
+  marker-type: ellipse; 
+  marker-fill: #FFFFFF; 
+  marker-allow-overlap: true; 
+  marker-clip: false; }
+
+#populated_places [ pop_max < 35676000] {
+   marker-width: 5.0;
+}
+#populated_places [ pop_max < 674394] {
+   marker-width: 4.6;
+}
+#populated_places [ pop_max < 299987.5] {
+   marker-width: 4.1;
+}
+#populated_places [ pop_max < 175972.5] {
+   marker-width: 3.7;
+}
+#populated_places [ pop_max < 111015.5] {
+   marker-width: 3.2;
+}
+#populated_places [ pop_max < 72387.5] {
+   marker-width: 2.8;
+}
+#populated_places [ pop_max < 47570.5] {
+   marker-width: 2.3;
+}
+#populated_places [ pop_max < 29588] {
+   marker-width: 1.9;
+}
+#populated_places [ pop_max < 15534] {
+   marker-width: 1.4;
+}
+#populated_places [ pop_max < 5500] {
+   marker-width: 1.0;
+}

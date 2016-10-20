@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Deep-Insights.js | createCartoDBLayer</title>
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <meta name=viewport content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="http://libs.cartocdn.com/di.js/v0/themes/css/deep-insights.css" />
+    <script src=" http://libs.cartocdn.com/di.js/v0/deep-insights.uncompressed.js"></script>
+    <style type="text/css">
+      html, body {
+        position:relative;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dashboard"></div>
+​
+    <script>
+      window.onload = function() {
+        
+        // set vizJson
+        //var vizJSON = "https://team.cartodb.com/u/ramirocartodb/api/v3/viz/3b3cb8be-273e-11e6-9f49-0ea31932ec1d/viz.json";
+          var vizJSON = "https://nemanosalvab.carto.com/api/v3/viz/a3aebad0-54e5-11e6-8ffb-0e233c30368f/viz.json";
+
+        // create dashboard
+        cartodb.deepInsights.createDashboard('#dashboard', vizJSON, {
+          no_cdn: false,
+          cartodb_logo: false
+        },function(err,dashboard){
+            // get map object
+            var map = dashboard.getMap();
+
+            // add populated layer
+            vis.map.createCartoDBLayer({
+              "type": "CartoDB",
+              "cartocss": "#populated_places{marker-fill-opacity: 0.9;marker-line-width: 0;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 2;marker-fill: #FFFFFF;marker-allow-overlap: true;}",
+              "sql": "SELECT * FROM table_2013_1 where fresa != 0"
+            });
+ 
+            // set widget parameters
+            var country = {
+                "type": "category",
+                "title": "Country Borders Category",
+                "column": "amun_nom_2"
+            };
+
+            var sum = {
+                "type": "formula",
+                "title": "Producción total",
+                "column": "fresa",
+                "operation": "sum"
+            };
+
+            var avg = {
+                "type": "formula",
+                "title": "Producción promedio",
+                "column": "fresa",
+                "operation": "avg"
+            };
+
+            var histo = {
+                "type": "histogram",
+                "title": "Histograma de producción",
+                "column": "fresa",
+                "bins": 10
+            };
+
+            var city = {
+                "type": "category",
+                "title": "Municipios",
+                "column": "amun_nom_2"
+            };
+
+            // add widgets to the dashboard
+
+            // layer 2 - populated places
+            dashboard.createFormulaWidget(sum,map.getLayer(2));
+            dashboard.createFormulaWidget(avg,map.getLayer(2));
+            dashboard.createHistogramWidget(histo,map.getLayer(2));
+            dashboard.createCategoryWidget(city,map.getLayer(2));
+
+            // layer 1 - world borders
+            dashboard.createCategoryWidget(country,map.getLayer(2));
+
+        });
+      }
+    </script>
+  </body>
+</html>
