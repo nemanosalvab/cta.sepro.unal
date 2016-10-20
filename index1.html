@@ -50,21 +50,21 @@
 
             var sum = {
                 "type": "formula",
-                "title": "Producción total",
+                "title": "Producción total (Ton)",
                 "column": "fresa",
                 "operation": "sum"
             };
 
             var avg = {
                 "type": "formula",
-                "title": "Producción promedio",
+                "title": "Producción promedio (Ton)",
                 "column": "fresa",
                 "operation": "avg"
             };
 
             var histo = {
                 "type": "histogram",
-                "title": "Histograma de producción",
+                "title": "Histograma de producción (Ton)",
                 "column": "fresa",
                 "bins": 10
             };
@@ -72,9 +72,17 @@
             
             var city = {
                 "type": "category",
-                "title": "Municipios",
+                "title": "Municipios productores",
                 "column": "amun_nom_2"
             };
+            
+            var cartodb ={
+                "type": "histogram",
+                "title": "Producción (Ton)",
+                "column": "fresa"
+                
+                
+            }
 
             // add widgets to the dashboard
 
@@ -85,7 +93,7 @@
             dashboard.createCategoryWidget(city,map.getLayer(2));
 
             // layer 1 - world borders
-            dashboard.createCategoryWidget(country,map.getLayer(2));
+            dashboard.createCategoryWidget(cartodb,map.getLayer(2));
 
         });
       }
