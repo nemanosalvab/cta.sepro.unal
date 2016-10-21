@@ -24,7 +24,7 @@
         
         // set vizJson
         //var vizJSON = "https://team.cartodb.com/u/ramirocartodb/api/v3/viz/3b3cb8be-273e-11e6-9f49-0ea31932ec1d/viz.json";
-          var vizJSON = "https://nemanosalvab.carto.com/api/v3/viz/a3aebad0-54e5-11e6-8ffb-0e233c30368f/viz.json";
+          var vizJSON = "https://nemanosalvab.carto.com/api/v3/viz/b861a648-584d-11e6-a874-0ecd1babdde5/viz.json";
 
         // create dashboard
         cartodb.deepInsights.createDashboard('#dashboard', vizJSON, {
@@ -38,7 +38,7 @@
             vis.map.createCartoDBLayer({
               "type": "CartoDB",
               "cartocss": "#populated_places{marker-fill-opacity: 0.9;marker-line-width: 0;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 2;marker-fill: #FFFFFF;marker-allow-overlap: true;}",
-              "sql": "SELECT * FROM table_2013_1 where fresa != 0"
+              "sql": "SELECT * FROM table_2013_1 where zanahoria_ != 0"
             });
  
             // set widget parameters
@@ -51,21 +51,21 @@
             var sum = {
                 "type": "formula",
                 "title": "Producción total (Ton)",
-                "column": "fresa",
+                "column": "zanahoria_",
                 "operation": "sum"
             };
 
             var avg = {
                 "type": "formula",
                 "title": "Producción promedio (Ton)",
-                "column": "fresa",
+                "column": "zanahoria_",
                 "operation": "avg"
             };
 
             var histo = {
                 "type": "histogram",
                 "title": "Histograma de producción (Ton)",
-                "column": "fresa",
+                "column": "zanahoria_",
                 "bins": 10
             };
             
@@ -79,7 +79,7 @@
             var cartodb ={
                 "type": "histogram",
                 "title": "Producción (Ton)",
-                "column": "fresa"
+                "column": "zanahoria_"
                 
                 
             }
@@ -87,13 +87,13 @@
             // add widgets to the dashboard
 
             // layer 2 - populated places
-            dashboard.createFormulaWidget(sum,map.getLayer(2));
-            dashboard.createFormulaWidget(avg,map.getLayer(2));
-            dashboard.createHistogramWidget(histo,map.getLayer(2));
-            dashboard.createCategoryWidget(city,map.getLayer(2));
+            dashboard.createFormulaWidget(sum,map.getLayer(1));
+            dashboard.createFormulaWidget(avg,map.getLayer(1));
+            dashboard.createHistogramWidget(histo,map.getLayer(1));
+            dashboard.createCategoryWidget(city,map.getLayer(1));
 
             // layer 1 - world borders
-            dashboard.createCategoryWidget(cartodb,map.getLayer(2));
+            dashboard.createCategoryWidget(cartodb,map.getLayer(1));
 
         });
       }
