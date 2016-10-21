@@ -87,13 +87,13 @@
             // add widgets to the dashboard
 
             // layer 2 - populated places
-            dashboard.createFormulaWidget(sum,map.getLayer(2));
-            dashboard.createFormulaWidget(avg,map.getLayer(2));
-            dashboard.createHistogramWidget(histo,map.getLayer(2));
-            dashboard.createCategoryWidget(city,map.getLayer(2));
+            dashboard.createFormulaWidget(sum,map.getLayer(1));
+            dashboard.createFormulaWidget(avg,map.getLayer(1));
+            dashboard.createHistogramWidget(histo,map.getLayer(1));
+            dashboard.createCategoryWidget(city,map.getLayer(1));
 
             // layer 1 - world borders
-            dashboard.createCategoryWidget(cartodb,map.getLayer(2));
+            dashboard.createCategoryWidget(cartodb,map.getLayer(1));
 
         });
       }
