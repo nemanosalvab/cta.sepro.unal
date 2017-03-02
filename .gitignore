@@ -34,3 +34,4 @@ Thumbs.db
 *.tar
 *.zip
 /HTML5Application/nbproject/private/
+/nbproject/private/

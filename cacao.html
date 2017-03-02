@@ -654,6 +654,40 @@
                 </div>
                 </footer> <!-- /#footer -->
                 
+                
+                <?php
+
+                    //CartoDB user name
+                    $cartodb_username = "nemanosalvab";
+
+                    //API Key (https://examples.cartodb.com/your_apps/api_key)
+                    $api_key= "ead9b25f806b20f3200d287e856d301c231fdbfe";
+
+                    //Example query. This inserts a point into a table: Longitude -120.23, Latitude: 10.66
+                    $sql = "INSERT INTO oferta (the_geom, programa_academico) VALUES (ST_GeomFromText('POINT(-71.2 42.5)', 4326),'test6')";
+
+                    //---------------
+                    // Initializing curl
+                    $ch = curl_init( "https://".$cartodb_username.".carto.com/api/v2/sql?" );
+                    echo ($ch);
+                    $query = http_build_query(array('q'=>$sql,'api_key'=>$api_key));
+                    // Configuring curl options
+                    curl_setopt($ch, CURLOPT_POST, TRUE);
+                    curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false); // requerido a partir de PHP 5.6.0
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+                    $result_not_parsed = curl_exec($ch);
+                    //----------------
+
+                    $result = json_decode($result_not_parsed);
+
+                    echo ("   ");
+                    echo(print_r($result));
+            
+
+                ?>
+                
+                
+                
             </body>
-        </html>
-    </html>
+</html>
