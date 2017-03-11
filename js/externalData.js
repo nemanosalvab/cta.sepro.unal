@@ -5,7 +5,10 @@
  */
 
 
-function externalData(){
+function externalData(producto){
+    var product = producto;
+    console.log(product);
+    
     
     // set the dimensions of the canvas
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
@@ -49,11 +52,11 @@ var svg = d3.select("#extenalData").append("svg")
 
 
 // load the data
-d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select mango,amun_nom_1 from table_2013_1 where mango >0 order by mango ASC  &api_key=947d3ad4f49905b235eb9cd8b071ea40ae9faa94", function(error, data) {
-
+a = d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ product +",amun_nom_1 from table_2013_1 where mango >0 order by "+ product +" ASC  &api_key=947d3ad4f49905b235eb9cd8b071ea40ae9faa94", function(error, data) {
+    console.log(a);
     data.rows.forEach(function(d) {
         d.Letter = d['amun_nom_1'];
-        d.Freq = +d['mango'];
+        d.Freq = +d[product];
     });
   
 
@@ -109,7 +112,7 @@ d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select mango,amun_nom_1 fro
    svg.append("g")
     .attr("transform", "translate(" + (width/2) + ", 15)")
     .append("text")
-    .text("PRODUCCIÓN DE MANGO 2013 - CUND")
+    .text("PRODUCCIÓN DE "+ product +" 2013 - CUND")
     .style({"text-anchor":"middle", "font-family":"Arial", "font-weight":"800"});
     
     
