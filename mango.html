@@ -33,13 +33,13 @@
         <link rel="stylesheet" href="css/main.css">
         <!-- responsive css -->
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/d3.css">
 
         <!-- Template Javascript Files
         ================================================== -->
         <!-- modernizr js -->
-        <script src="js/externalData.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        
+       
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <!-- jquery -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -55,71 +55,14 @@
         <script src="js/jquery.fancybox.js"></script>
         <!-- template main js -->
         <script src="js/main.js"></script>
-      
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+
+        <script src="js/externalData_1.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
 
-
-
-        <style>
-
-/*            svg {
-                border: 1px solid #000;
-            }*/
-
-            body {
-                font: 10px sans-serif;
-            }
-
-              .axis path,
-              .axis line {
-                fill: none;
-                stroke: #000;
-                shape-rendering: crispEdges;
-              }
-
-              .bar {
-                fill: orange;
-              }
-
-              .bar:hover {
-                fill: orangered ;
-              }
-
-              .x.axis path {
-                display: none;
-              }
-
-              .d3-tip {
-                line-height: 1;
-                font-weight: bold;
-                padding: 12px;
-                background: rgba(0, 0, 0, 0.8);
-                color: #fff;
-                border-radius: 2px;
-              }
-
-              /* Creates a small triangle extender for the tooltip */
-              .d3-tip:after {
-                box-sizing: border-box;
-                display: inline;
-                font-size: 10px;
-                width: 100%;
-                line-height: 1;
-                color: rgba(0, 0, 0, 0.8);
-                content: "\25BC";
-                position: absolute;
-                text-align: center;
-              }
-
-              /* Style northward tooltips differently */
-              .d3-tip.n:after {
-                margin: -1px 0 0 0;
-                top: 100%;
-                left: 0;
-              }  
-            
-
-        </style>
+        
 
     </head>
 
@@ -127,6 +70,7 @@
 
 
     <body>
+        
 
         <!--
         ==================================================
@@ -434,14 +378,16 @@
                                 <div id="extenalData"></div>
                             </div>
 
-    <!--                        <div class="col-sm-12">
-                                <h2 class="subtitle">TEST</h2> 
-                                <div id="extenalData"></h2>
-                            </div>-->
+                            <div class="col-sm-12">
+                                
+                                <div id="extenalData_1"></div>
+                                
                                 <script>
 
-                                    externalData("mango");
+                                    externalData_1("mango");
                                 </script>
+                            </div>
+                                
                         </div>
                     </div>
                 </div>
