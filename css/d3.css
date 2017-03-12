@@ -20,9 +20,7 @@ and open the template in the editor.
               shape-rendering: crispEdges;
             }
 
-            .bar {
-              fill: orange;
-            }
+            
 
             .bar:hover {
               fill: orangered ;

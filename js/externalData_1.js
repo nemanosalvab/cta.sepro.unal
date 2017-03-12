@@ -50,12 +50,12 @@ var svg = d3.select("#extenalData_1").append("svg")
 svg.call(tip);
 
 // load the data
-d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_nom_1 from table_2013_1 where mango >0 order by "+ producto +" ASC  &api_key=947d3ad4f49905b235eb9cd8b071ea40ae9faa94", function(error, data) {
+d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_nom_1 from table_2013_1 where " + producto + " >0 order by "+ producto +"  DESC LIMIT 15 &api_key=947d3ad4f49905b235eb9cd8b071ea40ae9faa94", function(error, data) {
         
 
         data.rows.forEach(function(d) {
         d.letter = d['amun_nom_1'];
-        d.frequency = d['mango'];
+        d.frequency = d[producto];
         });
 
         x.domain(data.rows.map(function(d) { return d.letter; }));

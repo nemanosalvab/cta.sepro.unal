@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="css/main.css">
         <!-- responsive css -->
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/d3.css">
         
         <!-- Template Javascript Files
         ================================================== -->
@@ -52,6 +53,19 @@
         <script src="js/jquery.fancybox.js"></script>
         <!-- template main js -->
         <script src="js/main.js"></script>
+        
+        <script src="js/externalData_1.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        
+       
+        <style>
+            .bar {
+              fill: 	YellowGreen ;
+            }
+        </style>
+        
+        
     </head>
     <body>
         <!--
@@ -358,30 +372,18 @@
                         El cultivo de mango en Cundinamarca presentó estabilidad con una variación positiva del 0.7%, no obstante su rendimiento disminuyo por problemas de sequía en el departamento (Gobernación de Cundinamarca, 2014). La producción de mango en Cundinamarca según datos del (MinAgricultura, 2014), es de 90.445,54 toneladas en 23 municipios. El principal productor es el municipio de Cachipay con una participación del 20,70% en el departamento, seguido por Anapoima con el 20,41% y Tocaima con el 16.93%. La producción restante se encuentra distribuida en los demás municipios. En la Figura 16 se puede ver gráficamente la producción del departamento de Cundinamarca distribuido por municipios para el año 2013.
                     </p>
                 <div class="row">
-                    <div class="col-sm-4">
-                         <figure class="wow fadeInLeft animated portfolio-item animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 0ms; -webkit-animation-delay: 0ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
-                            <div class="img-wrapper">
-                                <img src="images/portfolio/descripcionProductos/mango/man-pro-muni.PNG" class="img-responsive" alt="portfolio items">
-                                
-                                <div class="overlay">
-                                    <div class="buttons">
-                                    <a rel="gallery" title="El cultivo de la caña panelera en Cundinamarca para el año 2013 presenta un comportamiento estable a pesar de la afectación por el cambio climático originado por la sequía, lo que incidió en los rendimientos del cultivo, así como en la variación de los precios pagados al productor (Gobernación de Cundinamarca, 2014). La producción de caña panelera en Cundinamarca según datos del (MinAgricultura, 2014), es de 193.030 toneladas en 47 municipios. La producción la lidera el municipio de Caparrapí con una participación del 28,5% en el departamento, seguido por Útica con el 10.2% y La Peña con el 9.4%. La producción restante se encuentra distribuida en los demás municipios. " class="fancybox" href="images/portfolio/descripcionProductos/mango/man-pro-muni.PNG">Ampliar</a>        
-<!--                                        <a target="_blank" href="single-postfolio.html">Details</a>-->
-                                    </div>
-                                </div>
+                            <div class="col-sm-6">                                
+                            <div id="extenalData"></div>
                             </div>
-                            <figcaption>
-                                <h4>
-                                    <a href="#">
-                                        Producción Municipal       
-                                    </a>
-                                </h4>
-<!--                                <p>
-                                    Redesigne UI Concept
-                                </p>-->
-                            </figcaption>
-                        </figure>
-                    </div>
+
+                            <div class="col-sm-12">
+                                
+                                <div id="extenalData_1"></div>
+                                
+                                <script>
+                                    externalData_1("cana_panel");
+                                </script>
+                            </div>
 
 
                 </div>
