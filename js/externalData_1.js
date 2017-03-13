@@ -32,14 +32,30 @@ var yAxis = d3.svg.axis()
     
   
   
-  
+if (producto === "pob_bov_20"){
+          parame = "Cabezas de ganado";
+          
+      }else if (producto === "pob_por_20") {
+          parame = "Cerdos";
+      } 
+      
+      else if (producto === "pob_avi_20") {
+          parame = "Pollos";
+      } 
+      else {
+          parame = "Toneladas";
+      }
+      
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>Municipio:</strong> <span style='color:red'>" + d.letter +  "</span>" + "<strong> <br> </br>Toneladas:</strong> <span style='color:red'>" + d.frequency +  "</span>";
+      
+      
+    console.log(parame.toString());
+    return "<strong>Municipio:</strong> <span style='color:red'>" + d.letter +  "</span>" + "<strong> <br> </br>"+ parame.toString()+ ":</strong> <span style='color:red'>" + d.frequency +  "</span>";
 
-  })
+  });
 
 var svg = d3.select("#extenalData_1").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -48,6 +64,8 @@ var svg = d3.select("#extenalData_1").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 svg.call(tip);
+
+
 
 // load the data
 d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_nom_1 from table_2013_1 where " + producto + " >0 order by "+ producto +"  ASC LIMIT 15 &api_key=947d3ad4f49905b235eb9cd8b071ea40ae9faa94", function(error, data) {
@@ -61,7 +79,7 @@ d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_
         x.domain(data.rows.map(function(d) { return d.letter; }));
         y.domain([0, d3.max(data.rows, function(d) { return d.frequency; })]);
     
-
+ 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -81,7 +99,8 @@ d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Toneladas");
+      
+      .text(parame.toString());
 
   svg.selectAll(".bar")
       .data(data.rows)
@@ -102,7 +121,6 @@ d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_
     .style({"text-anchor":"middle", "font-family":"Arial", "font-weight":"800"});
 
 });
-
 //function type(d) {
 //  d.frequency = +d.frequency;
  // return d;
@@ -110,6 +128,8 @@ d3.json("https://nemanosalvab.carto.com/api/v2/sql?q=select "+ producto +",amun_
 
 
 }
+
+
 
 
 
