@@ -23,6 +23,7 @@
   </head>
   <body>
     <div id='map'></div>
+    <div id='charts'></div>
     <script>
       function getNonZeroRandomNumber(){
         //var random = Math.floor(Math.random()*199) - 99;}
@@ -50,6 +51,8 @@
         message: function (data) {
             map.setView(data[0].latlng, 8); //8 is the zoom level
             console.log(data[0].latlng);
+            console.log(data[0]);
+
         },
 
         //connect: connect,
@@ -60,6 +63,44 @@
 
 
     });
+
+      
+    
+      eon.chart({
+        pubnub: pubnub,
+        history: false,
+        channels: [channel],
+        limit: 100,
+        ssl: true,
+        debug: true,
+        generate: {
+            bindto: '#charts',
+            data: {
+                x: 'x'
+            },
+            axis: {
+                x: {
+                    type: 'timeseries',
+                    tick: {
+                        format: '%H:%m:%S'
+                    }
+                }
+            }
+        },
+        transform: function(m) {
+            return {
+                eon: {
+                    'Humidy': m[0].ambientales[1], 
+                    'Temperature': m[0].ambientales[0],
+                    'Sonda_temperature' : m[0].ambientales[2]
+                    
+                }
+            }
+        }
+      });
+
+
+</script>
 
     
 
