@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+</head>
+<body>
+
+        <div id="chart-temp"></div>
+        <div id="chart-humid"></div>
+        <script>
+          var pubnub = new PubNub({
+            publishKey: 'pub-c-b28bbf57-642e-4a0d-9bcd-f307bd13e659',
+            subscribeKey: 'sub-c-2059b05c-4f7d-11e7-bf50-02ee2ddab7fe'
+          });
+          var channel = 'Channel-s0kaq51i3';
+          var charTemp = eon.chart({
+            pubnub: pubnub,
+            channels: [channel],
+            generate: {
+              bindto: '#chart-temp',
+              data: {
+                  x:'x',
+                  labels: true
+              }
+            },
+            transform : function(data) {
+            return { columns : [
+            ['x', new Date().getTime()],
+            ['Value', data]
+            ] };
+            }
+
+          });
+          var chartHumid = eon.chart({
+            pubnub: pubnub,
+            channels: [channel],
+            generate: {
+              bindto: '#chart-humid',
+              data: {
+                x:'x',
+                labels: true
+              }
+            },
+            transform : function(m) {
+                return {eon:{'Humidity': m}}
+            }
+          });
+        </script>
+    
+</body>
+</html>

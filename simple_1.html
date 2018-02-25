@@ -40,21 +40,30 @@
 
       var channel = 'Channel-s0kaq51i3';
 
-      eon.map({
+      var map = eon.map({
         pubnub: pubnub,
         id: 'map',
         mbToken: 'pk.eyJ1IjoibmVtYW5vc2FsdmFiIiwiYSI6ImNqM3VhZHN4ZjAwaGMyd254ZG8yMmdrZ3oifQ.Kj1rzXcXVbgl-UXFloNE_w',
         mbId: 'nemanosalvab.d1ec91df',
         channels: [channel],
+
+        message: function (data) {
+            map.setView(data[0].latlng, 8); //8 is the zoom level
+            console.log(data[0].latlng);
+        },
+
         //connect: connect,
         options: {
           zoomAnimation: false
+
         }
+
+
     });
 
-
-
+    
 
     </script>
+
   </body>
 </html>
